@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/presentation/custom/custom_button.dart';
+import 'package:flutter_application_1/presentation/splashpage.dart';
 import 'package:flutter_application_1/utils/global.dart';
 import 'package:flutter_application_1/utils/string_values.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';

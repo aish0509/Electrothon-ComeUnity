@@ -1,5 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/presentation/login_screen.dart';
+import 'package:flutter_application_1/presentation/splashpage.dart';
+import 'package:flutter_application_1/utils/global.dart';
 
 class Auth extends StatefulWidget {
   static const String routeNamed = 'auth';
