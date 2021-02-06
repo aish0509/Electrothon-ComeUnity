@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class OurTheme {
   ThemeData buildTheme() {
     return ThemeData(
-     primaryColor: Styles.COFFEE,
+      primaryColor: Styles.COFFEE,
       inputDecorationTheme: InputDecorationTheme(
         hintStyle: TextStyle(
           fontSize: 17.0,
