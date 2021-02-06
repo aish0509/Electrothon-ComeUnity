@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
@@ -27,13 +26,13 @@ class _SplashPageState extends State<SplashPage> {
         return HomePage();
         break;
       case 2:
-        return PostPage()
+        return PostPage();
         break;
       case 3:
         return Course();
         break;
       case 4:
-        return Profile(profile:userData, page:false);
+        return Profile(profile: userData, page: false);
         break;
       default:
         return HomePage();
