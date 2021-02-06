@@ -1,6 +1,8 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_application_1/models/user.dart';
+import 'package:flutter_application_1/services/upload_file_firebase.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 
 double defaultHeight = 896;
@@ -8,6 +10,13 @@ double defaultWidth = 414;
 int currentPage = 0;
 bool editt = false;
 FirebaseUser mainUser;
+
+FirebaseUser mainUser;
+User userData;
+
+
+
+final UploadFileFirebase uploadFileFirebase = UploadFileFirebase.getInstance();
 
 
 Widget showSnackbar(
