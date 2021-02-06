@@ -11,7 +11,6 @@ int currentPage = 0;
 bool editt = false;
 FirebaseUser mainUser;
 
-FirebaseUser mainUser;
 User userData;
 
 
