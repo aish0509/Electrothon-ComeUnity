@@ -5,6 +5,7 @@ import 'package:flutter_application_1/presentation/tabpages/course.dart';
 import 'package:flutter_application_1/presentation/tabpages/homepage.dart';
 import 'package:flutter_application_1/presentation/tabpages/postpage.dart';
 import 'package:flutter_application_1/presentation/tabpages/profilepage.dart';
+import 'package:flutter_application_1/presentation/tabpages/searchpage.dart';
 import 'package:flutter_application_1/utils/global.dart';
 import 'package:flutter_application_1/utils/styles.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
@@ -23,7 +24,7 @@ class _SplashPageState extends State<SplashPage> {
         return HomePage();
         break;
       case 1:
-        return HomePage();
+        return Search();
         break;
       case 2:
         return PostPage();
