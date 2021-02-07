@@ -189,6 +189,7 @@ class _PeopleState extends State<People> {
     } else {
       child = _getEditPeople();
     }
+    
 
     return CustomScaffold(
         appbarOnTap: () {
