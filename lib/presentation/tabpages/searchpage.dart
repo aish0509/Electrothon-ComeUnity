@@ -1,5 +1,6 @@
 import 'package:flutter_application_1/models/user.dart';
 import 'package:flutter_application_1/presentation/custom/custom_profile_card.dart';
+import 'package:flutter_application_1/presentation/tabpages/people.dart';
 import 'package:flutter_application_1/utils/global.dart';
 import 'package:flutter_application_1/utils/styles.dart';
 import 'package:flutter/material.dart';
@@ -27,6 +28,14 @@ class _SearchState extends State<Search> {
     });
   }
 
+  _navigatToPeople(User people) {
+                                     Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) =>People(peop: people)),
+    );
+
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,7 +59,9 @@ class _SearchState extends State<Search> {
                               imgh: 90,
                               imgw: 90,
                               number: userList[i].email,
-                              onTap: () {},
+                              onTap: () {
+                                _navigatToPeople(userList[i]);
+                              },
                             ),
                           )
                       ],

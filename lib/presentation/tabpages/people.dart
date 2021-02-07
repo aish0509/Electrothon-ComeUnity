@@ -1,33 +1,33 @@
 import 'package:flutter_application_1/models/user.dart';
-import 'package:flutter_application_1/presentation/custom/custom_button.dart';
-import 'package:flutter_application_1/presentation/custom/editprofilepage.dart';
-import 'package:flutter_application_1/presentation/login_screen.dart';
+import 'package:flutter_application_1/presentation/custom/custom_scaffold.dart';
+
 import 'package:flutter_application_1/utils/styles.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:flutter_application_1/utils/string_values.dart';
 import 'package:flutter_application_1/utils/global.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
-class Profile extends StatefulWidget {
-  User profile;
-  bool page;
-  Profile({this.profile, this.page});
+class People extends StatefulWidget {
+  User peop;
+
+  People({this.peop});
 
   @override
-  _ProfileState createState() => _ProfileState(profile, page);
+  _PeopleState createState() => _PeopleState(peop);
 }
 
-class _ProfileState extends State<Profile> {
-  User profile;
-  bool page;
-  _ProfileState(this.profile, this.page);
+class _PeopleState extends State<People> {
+  User peop;
 
-  _navigateToLoginPage() {
-    Navigator.popAndPushNamed(context, LoginPage.routeNamed);
+  _PeopleState(this.peop);
+
+  @override
+  void initState() {
+    print(peop.name);
+    super.initState();
   }
 
-  _getProfile() {
+  _getPeople() {
     return SingleChildScrollView(
       child: Column(
         children: [
@@ -58,7 +58,7 @@ class _ProfileState extends State<Profile> {
                             padding: const EdgeInsets.symmetric(
                                 vertical: 3.0, horizontal: 15.0),
                             child: Text(
-                              profile.follower.toString(),
+                              peop.follower.toString(),
                               style: TextStyle(
                                   color: Styles.WHITE,
                                   fontWeight: FontWeight.w600),
@@ -80,7 +80,7 @@ class _ProfileState extends State<Profile> {
                             backgroundColor: Styles.PRIMARY_CREAM,
                             child: CircleAvatar(
                               backgroundImage: NetworkImage(
-                                profile.image,
+                                peop.image,
                               ),
                               radius: 67.0,
                             ),
@@ -89,12 +89,12 @@ class _ProfileState extends State<Profile> {
                             height: ScreenUtil.instance.setHeight(12.0),
                           ),
                           Text(
-                            profile.name,
+                            peop.name,
                             style:
                                 TextStyle(fontSize: 27.0, color: Styles.WHITE),
                           ),
                           Text(
-                            profile.email,
+                            peop.email,
                             style:
                                 TextStyle(fontSize: 16.0, color: Styles.WHITE),
                           ),
@@ -112,7 +112,7 @@ class _ProfileState extends State<Profile> {
                             padding: const EdgeInsets.symmetric(
                                 vertical: 3.0, horizontal: 15.0),
                             child: Text(
-                              profile.following.toString(),
+                              peop.following.toString(),
                               style: TextStyle(
                                   color: Styles.WHITE,
                                   fontWeight: FontWeight.w600),
@@ -139,117 +139,26 @@ class _ProfileState extends State<Profile> {
                   crossAxisAlignment: CrossAxisAlignment.stretch,
                   children: [
                     Text(
-                      profile.bio,
+                      peop.bio,
                       style:
                           TextStyle(height: ScreenUtil.instance.setHeight(1.6)),
                       textAlign: TextAlign.justify,
                     )
                   ],
                 )),
-          ),
-          Container(
-            padding: EdgeInsets.only(top: 1.5),
-            color: Styles.GRAY_BROWN,
-            child: GridView.count(
-              shrinkWrap: true,
-              crossAxisCount: 3,
-              crossAxisSpacing: 1.5,
-              mainAxisSpacing: 1.5,
-              children: <Widget>[
-                Container(
-                  color: Styles.PRIMARY_CREAM,
-                  child: IconButton(
-                      icon: Icon(
-                        Icons.phone_in_talk,
-                        size: ScreenUtil.instance.setHeight(52),
-                        color: Styles.DARK_TAN,
-                      ),
-                      onPressed: () {}),
-                ),
-                Container(
-                  color: Styles.PRIMARY_CREAM,
-                  child: IconButton(
-                      icon: Icon(
-                        Icons.chat,
-                        size: ScreenUtil.instance.setHeight(52),
-                        color: Styles.DARK_TAN,
-                      ),
-                      onPressed: () {}),
-                ),
-                Container(
-                  color: Styles.PRIMARY_CREAM,
-                  child: IconButton(
-                      icon: Icon(
-                        Icons.mail,
-                        size: ScreenUtil.instance.setHeight(52),
-                        color: Styles.DARK_TAN,
-                      ),
-                      onPressed: () {}),
-                ),
-                Container(
-                  color: Styles.PRIMARY_CREAM,
-                  child: IconButton(
-                      icon: Icon(
-                        FontAwesomeIcons.facebook,
-                        size: ScreenUtil.instance.setHeight(52),
-                        color: Styles.DARK_TAN,
-                      ),
-                      onPressed: () {}),
-                ),
-                Container(
-                  color: Styles.PRIMARY_CREAM,
-                  child: IconButton(
-                    icon: Icon(
-                      FontAwesomeIcons.linkedin,
-                      size: ScreenUtil.instance.setHeight(52),
-                      color: Styles.DARK_TAN,
-                    ),
-                    onPressed: () {},
-                  ),
-                ),
-                Container(
-                  color: Styles.PRIMARY_CREAM,
-                  child: IconButton(
-                      icon: Icon(
-                        Icons.edit,
-                        size: ScreenUtil.instance.setHeight(52),
-                        color: Styles.DARK_TAN,
-                      ),
-                      onPressed: () {
-                        // setState(() {
-                        //   editt = true;
-                        // });
-                      }),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-            child: CustomButton(
-                containerColor: Styles.COFFEE,
-                labelText: 'Log Out',
-                isLoading: false,
-                onTap: () async {
-                  bool sign = await firebaseAuthService.signOut();
-                  if (sign)
-                    _navigateToLoginPage();
-                  else
-                    showSnackbar(Strings.PROBLEM_IN_LOGOUT, context);
-                }),
           )
         ],
       ),
     );
   }
 
-  _getEditProfile() {
+  _getEditPeople() {
     return Expanded(
       child: ListView(
           padding: EdgeInsets.symmetric(vertical: 40.0, horizontal: 35.0),
           children: [
             Text(
-              'Edit Profile',
+              'Edit People',
               style: TextStyle(
                   color: Styles.DARK_GRAYBROWN,
                   fontSize: 25.0,
@@ -267,22 +176,25 @@ class _ProfileState extends State<Profile> {
                 radius: 67.0,
               ),
             ),
-            MyEditForm()
           ]),
     );
   }
 
+  bool k = false;
   @override
   Widget build(BuildContext context) {
     Widget child;
-    if (editt == false) {
-      child = _getProfile();
+    if (k == false) {
+      child = _getPeople();
     } else {
-      child = _getEditProfile();
+      child = _getEditPeople();
     }
 
-    return Scaffold(
-        backgroundColor: Styles.PRIMARY_CREAM,
+    return CustomScaffold(
+        appbarOnTap: () {
+          Navigator.pop(context);
+        },
+        appBarText: "",
         body: Column(
           children: <Widget>[child],
         ));
